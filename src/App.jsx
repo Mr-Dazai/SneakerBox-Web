@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      {/* <Sidebar /> */}
+      <Sidebar />
       <Routes>
         <Route path='/' exact element={<Home />} />
         <Route path='about' element={<About />} />
@@ -35,7 +35,7 @@ function App() {
         />
         <Route path='*' element={<Error />} />
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   )
 }

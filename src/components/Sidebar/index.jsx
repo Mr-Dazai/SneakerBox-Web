@@ -1,5 +1,5 @@
 import React from 'react'
-// import logo from '../assets/logo.svg'
+import logo from '../../assets/logo3.svg'
 import { Link } from 'react-router-dom'
 import { useProductsContext } from '../../context/products_context'
 import { FaTimes } from 'react-icons/fa'
@@ -9,7 +9,39 @@ import CartButtons from '../CartButtons'
 import { useUserContext } from '../../context/user_context'
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>
+  const { isSidebarOpen, closeSidebar } = useProductsContext()
+
+  return (
+    <SidebarContainer>
+      <aside
+        className={`${isSidebarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}
+      >
+        <div className='sidebar-header'>
+          <img src={logo} className='logo' alt='log' />
+          <button className='close-btn' type='button' onClick={closeSidebar}>
+            <FaTimes />
+          </button>
+        </div>
+        <ul className='links'>
+          {links.map(({ id, text, url }) => {
+            return (
+              <li key={id}>
+                <Link to={url} onClick={closeSidebar}>
+                  {text}
+                </Link>
+              </li>
+            )
+          })}
+          <li>
+            <Link to='/checkout' onClick={closeSidebar}>
+              Checkout
+            </Link>
+          </li>
+        </ul>
+        <CartButtons />
+      </aside>
+    </SidebarContainer>
+  )
 }
 
 const SidebarContainer = styled.div`
@@ -18,24 +50,26 @@ const SidebarContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 0rem;
+    padding-right: 25px;
+    height: 92px;
   }
   .close-btn {
-    font-size: 2rem;
+    font-size: 1.8rem;
     background: transparent;
     border-color: transparent;
     color: var(--clr-primary-5);
     transition: var(--transition);
     cursor: pointer;
     color: var(--clr-red-dark);
-    margin-top: 0.2rem;
+    margin-top: 1rem;
   }
   .close-btn:hover {
     color: var(--clr-red-light);
   }
   .logo {
-    justify-self: center;
-    height: 45px;
+    justify-self: left;
+    width: 250px;
   }
   .links {
     margin-bottom: 2rem;
@@ -43,10 +77,10 @@ const SidebarContainer = styled.div`
   .links a {
     display: block;
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: capitalize;
     padding: 1rem 1.5rem;
-    color: var(--clr-grey-3);
+    color: var(--clr-black);
     transition: var(--transition);
     letter-spacing: var(--spacing);
   }
@@ -54,8 +88,8 @@ const SidebarContainer = styled.div`
   .links a:hover {
     padding: 1rem 1.5rem;
     padding-left: 2rem;
-    background: var(--clr-grey-10);
-    color: var(--clr-grey-2);
+    background: var(--clr-yellow);
+    color: var(--clr-white);
   }
 
   .sidebar {
@@ -64,7 +98,7 @@ const SidebarContainer = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--clr-white);
+    background: var(--clr-blue);
     transition: var(--transition);
     transform: translate(-100%);
     z-index: -1;
