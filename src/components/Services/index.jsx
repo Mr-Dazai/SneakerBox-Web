@@ -3,17 +3,44 @@ import styled from 'styled-components'
 import { services } from '../../utils/constants'
 
 const Services = () => {
-  return <h4>services </h4>
+  return (
+    <Wrapper>
+      <div className='section-center'>
+        <article className='header'>
+          <h3>
+            Custom Designs <br /> only for you
+          </h3>
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum, qui
+            architecto laborum unde adipisci iusto praesentium. Ratione rerum
+            pariatur architecto!
+          </p>
+        </article>
+        <div className='services-center'>
+          {services.map((service) => {
+            const { id, icon, title, text } = service
+            return (
+              <article key={id} className='service'>
+                <span className='icon'>{icon}</span>
+                <h4>{title}</h4>
+                <p>{text}</p>
+              </article>
+            )
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
   h3,
   h4 {
-    color: var(--clr-primary-1);
+    color: var(--clr-white);
   }
   padding: 5rem 0;
 
-  background: var(--clr-primary-10);
+  background: var(--clr-vivid-green-cyan);
 
   .header h3 {
     margin-bottom: 2rem;
@@ -21,7 +48,8 @@ const Wrapper = styled.section`
   p {
     margin-bottom: 0;
     line-height: 1.8;
-    color: var(--clr-primary-3);
+    color: var(--clr-white);
+    font-weight: 500;
   }
   .services-center {
     margin-top: 4rem;
@@ -29,12 +57,15 @@ const Wrapper = styled.section`
     gap: 2.5rem;
   }
   .service {
-    background: var(--clr-primary-7);
+    background: var(--clr-light-green-cyan);
     text-align: center;
     padding: 2.5rem 2rem;
     border-radius: var(--radius);
     p {
-      color: var(--clr-primary-2);
+      color: var(--clr-black);
+    }
+    h4 {
+      color: var(--clr-black);
     }
   }
   span {
@@ -45,8 +76,8 @@ const Wrapper = styled.section`
     place-items: center;
     margin-bottom: 1rem;
     border-radius: 50%;
-    background: var(--clr-primary-10);
-    color: var(--clr-primary-1);
+    background: var(--clr-white);
+    color: var(--clr-black);
     svg {
       font-size: 2rem;
     }

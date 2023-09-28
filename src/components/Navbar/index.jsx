@@ -44,6 +44,7 @@ const NavContainer = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+  background: var(--clr-white);
 
   .nav-center {
     width: 90vw;

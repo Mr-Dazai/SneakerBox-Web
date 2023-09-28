@@ -1,11 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-// import heroBcg from '../assets/hero-bcg.jpeg'
-// import heroBcg2 from '../assets/hero-bcg-2.jpeg'
+import heroBcg from '../../assets/erik-mclean-e_qqXYMDyfM-unsplash.jpg'
+import heroBcg2 from '../../assets/chris-henry-tV8yaU09t7w-unsplash.jpg'
 
 const Hero = () => {
-  return <h4>hero</h4>
+  return (
+    <Wrapper className='section-center'>
+      <article className='content'>
+        <h1>
+          Pick your <br />
+          Style
+        </h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia
+          minus saepe perspiciatis soluta voluptatum similique culpa excepturi
+          quisquam, debitis eos?
+        </p>
+        <Link to='/products' className='btn hero-btn'>
+          Shop Now
+        </Link>
+      </article>
+      <article className='img-container'>
+        <img src={heroBcg} alt='nice' className='main-img' />
+        <img src={heroBcg2} alt='nice' className='accent-img' />
+      </article>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.section`
@@ -20,8 +41,8 @@ const Wrapper = styled.section`
     line-height: 2;
     max-width: 45em;
     margin-bottom: 2rem;
-    color: var(--clr-grey-5);
-    font-size: 1rem;
+    color: var(--clr-black);
+    font-size: 1.5rem;
   }
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
@@ -31,7 +52,7 @@ const Wrapper = styled.section`
       margin-bottom: 2rem;
     }
     p {
-      font-size: 1.25rem;
+      font-size: 1.5rem;
     }
     .hero-btn {
       padding: 0.75rem 1.5rem;
@@ -54,7 +75,7 @@ const Wrapper = styled.section`
       bottom: 0;
       left: 0;
       width: 250px;
-      transform: translateX(-50%);
+      transform: translateX(-45%) translateY(12%);
       border-radius: var(--radius);
     }
     .img-container::before {
@@ -62,7 +83,6 @@ const Wrapper = styled.section`
       position: absolute;
       width: 10%;
       height: 80%;
-      background: var(--clr-primary-9);
       bottom: 0%;
       left: -8%;
       border-radius: var(--radius);
